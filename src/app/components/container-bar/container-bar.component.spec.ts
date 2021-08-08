@@ -1,6 +1,14 @@
+import { Component, ComponentFactoryResolver } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DynamicHostDirective } from 'src/app/directives/dynamic-host.directive';
 
 import { ContainerBarComponent } from './container-bar.component';
+
+@Component({
+  selector: 'mock-component',
+  template: '<div></div>'
+})
+export class MockComponent {}
 
 describe('ContainerBarComponent', () => {
   let component: ContainerBarComponent;
@@ -8,7 +16,10 @@ describe('ContainerBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContainerBarComponent ]
+      declarations: [
+        ContainerBarComponent,
+        DynamicHostDirective
+      ],
     })
     .compileComponents();
   });
@@ -16,6 +27,13 @@ describe('ContainerBarComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ContainerBarComponent);
     component = fixture.componentInstance;
+
+    component.componentsList = [
+      {
+        component: MockComponent
+      }
+    ];
+
     fixture.detectChanges();
   });
 
