@@ -1,0 +1,24 @@
+.resetButton,
+.updateButton {
+  margin-left: .5rem;
+  border-style: solid;
+  border-width: 1px;
+
+  &:disabled {
+    color: black;
+    border-color:gray;
+    background-color: lightgray;
+  }
+}
+
+.updateButton {
+  border-color:rgb(7, 94, 7);
+  background-color: rgb(191, 236, 145);
+  color: rgb(2, 49, 2);
+}
+
+.resetButton {
+  border-color: rgb(83, 4, 4);
+  color:rgb(83, 4, 4);
+  background-color: rgb(235, 107, 107);
+}
