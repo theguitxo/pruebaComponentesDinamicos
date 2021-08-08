@@ -22,4 +22,18 @@ describe('CounterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('on execute add function, counter must increase one', () => {
+    const expectedValue = component.value + 1;
+    component.add();
+
+    expect(component.value).toEqual(expectedValue);
+  });
+
+  it('on execute decrease function, counter must decrease one', () => {
+    const expectedValue = component.value - 1;
+    component.decrease();
+
+    expect(component.value).toEqual(expectedValue);
+  });
 });

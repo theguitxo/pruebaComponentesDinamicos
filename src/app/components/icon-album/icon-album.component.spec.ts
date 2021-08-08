@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { IconViewComponent } from '../icon-view/icon-view.component';
 
 import { IconAlbumComponent } from './icon-album.component';
 
@@ -8,7 +10,10 @@ describe('IconAlbumComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IconAlbumComponent ]
+      declarations: [
+        IconAlbumComponent,
+        IconViewComponent
+      ]
     })
     .compileComponents();
   });
@@ -21,5 +26,11 @@ describe('IconAlbumComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create 4 icon-view components', () => {
+    const totalIconsCreated = fixture.debugElement.queryAll(By.css('app-icon-view')).length;
+
+    expect(totalIconsCreated).toBe(4);
   });
 });
