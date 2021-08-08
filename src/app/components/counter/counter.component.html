@@ -1,6 +1,9 @@
 <div class="container">
+  <div *ngIf="title" class="title">
+    {{ title }}
+  </div>
   <div class="counter">
-    Counter: {{ value }}
+    Count: {{ value }}
   </div>
   <div class="buttons">
     <button (click)="add()">Add</button>

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   componentsList!: ComponentItem[];
 
   newTitle!: string;
-  defaultTitle = 'Titulo de prueba';
+  defaultTitle = 'Test title';
   titleModified = false;
 
   ngOnInit(): void {
@@ -32,9 +32,21 @@ export class AppComponent implements OnInit, AfterViewInit {
       },
       {
         component: CounterComponent,
+        inputs: [
+          {
+            name: 'title',
+            value: 'Counter 1'
+          }
+        ]
       },
       {
         component: CounterComponent,
+        inputs: [
+          {
+            name: 'title',
+            value: 'Counter 2'
+          }
+        ]
       },
       {
         component: IconAlbumComponent

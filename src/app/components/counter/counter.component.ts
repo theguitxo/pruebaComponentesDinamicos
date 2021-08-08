@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { CounterService } from 'src/app/services/counter.service';
   providers: [CounterService]
 })
 export class CounterComponent implements OnInit {
+  @Input() title!: string;
+
   value!: number;
 
   constructor(
