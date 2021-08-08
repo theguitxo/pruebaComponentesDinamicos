@@ -13,7 +13,7 @@ export class IconViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.url = `/assets/images/${this.icon}`;
+    this.url = `assets/images/${this.icon}`;
   }
 
 }
