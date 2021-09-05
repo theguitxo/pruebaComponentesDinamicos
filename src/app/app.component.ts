@@ -1,6 +1,6 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ComponentItem } from './components/container-bar/container-bar.component';
+import { ComponentItem, OutputEvent } from './components/container-bar/container-bar.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { IconAlbumComponent } from './components/icon-album/icon-album.component';
 import { TitleComponent } from './components/title/title.component';
@@ -49,7 +49,32 @@ export class AppComponent implements OnInit, AfterViewInit {
         ]
       },
       {
-        component: IconAlbumComponent
+        component: IconAlbumComponent,
+        inputs: [
+          {
+            name: 'id',
+            value: 'alert'
+          }
+        ],
+        outputs: [
+          {
+            name: 'showIcon'
+          }
+        ]
+      },
+      {
+        component: IconAlbumComponent,
+        inputs: [
+          {
+            name: 'id',
+            value: 'console'
+          }
+        ],
+        outputs: [
+          {
+            name: 'showIcon'
+          }
+        ]
       }
     ];
   }
@@ -73,5 +98,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.titleModified = false;
     this.newTitle = '';
     this.updateTitle(this.defaultTitle);
+  }
+
+  outputHandler(event: OutputEvent) {
+    console.log(event.selector);
+    if (event.eventData.id === 'console') {
+      console.log(`Event: ${event.eventName}\nData: ${event.eventData.icon}`);
+    } else if (event.eventData.id === 'alert') {
+      window.alert(`Event: ${event.eventName}\nData: ${event.eventData.icon}`);
+    }
   }
 }

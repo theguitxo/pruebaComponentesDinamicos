@@ -1,5 +1,7 @@
 <div class="wrapper">
-  <div *ngFor="let icon of icons">
+  <div
+    *ngFor="let icon of icons"
+    (click)="handleShowIcon(icon)">
     <app-icon-view [icon]="icon"></app-icon-view>
   </div>
 </div>

@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
+export interface EmitData {
+  id: string;
+  icon: string;
+}
 @Component({
   selector: 'app-icon-album',
   templateUrl: './icon-album.component.html',
@@ -8,6 +12,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class IconAlbumComponent implements OnInit {
 
+  @Input('id') id!: string;
+  @Output('showIcon') showIcon: EventEmitter<EmitData> = new EventEmitter();
   icons!: string[];
 
   constructor() { }
@@ -19,6 +25,10 @@ export class IconAlbumComponent implements OnInit {
       'icons8-super-mario-100.png',
       'icons8-totoro-100.png'
     ];
+  }
+
+  handleShowIcon(icon: string): void {
+    this.showIcon.emit({ id: this.id, icon });
   }
 
 }
